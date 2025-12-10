@@ -16,28 +16,58 @@
             background-position: center;
             background-repeat: no-repeat;
             overflow: hidden;
+            position: relative;
+            font-family: Arial, sans-serif;
         }
 
-        /* Capa oscura opcional si quieres que se vea más elegante */
         .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        /* Botón para iniciar sonido */
+        #playButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px #000;
         }
     </style>
 </head>
 
 <body>
 
-   <audio id="music" loop>
+    <!-- Audio -->
+    <audio id="music" loop>
         <source src="musica.mp3" type="audio/mpeg">
-   </audio>
-
+    </audio>
 
     <div class="overlay"></div>
+
+    <!-- Botón obligatorio para habilitar sonido en móviles -->
+    <button id="playButton">🎵 Reproducir música</button>
+
+    <script>
+        const audio = document.getElementById("music");
+        const button = document.getElementById("playButton");
+
+        button.addEventListener("click", () => {
+            audio.play();
+            button.style.display = "none"; // Oculta botón después de iniciar audio
+        });
+    </script>
+
 </body>
 
 </html>
